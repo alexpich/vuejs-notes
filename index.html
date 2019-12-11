@@ -23,8 +23,9 @@
       <p>{{counter}}</p>
       <p v-on:mousemove="updateCoordinates">
         Coordinates: {{ x }} / {{ y }} -
-        <span v-on:mousemove.stop.prevent="dummy">DEAD SPOT</span>
+        <span v-on:mousemove.stop="dummy">DEAD SPOT</span>
       </p>
+      <input type="text" v-on:keyup.enter.space="alertMe" />
     </div>
 
     <script>
@@ -58,6 +59,9 @@
           },
           dummy: function(event) {
             event.stopPropagation();
+          },
+          alertMe: function() {
+            alert("alert!");
           }
         }
       });
